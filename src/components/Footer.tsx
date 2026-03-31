@@ -56,7 +56,7 @@ export function Footer() {
                 <Mail size={14} className="text-primary shrink-0 mt-0.5" />
                 <span className="break-all">sales.pro@soozey.com</span>
               </a>
-              <a href="tel:+261342179997" className="flex items-center gap-2 hover:text-primary transition-colors">
+              <a href="tel:+261383066686" className="flex items-center gap-2 hover:text-primary transition-colors">
                 <Phone size={14} className="text-primary shrink-0" />
                 <span>
                   +261 38 30 666 86

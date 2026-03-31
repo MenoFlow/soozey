@@ -144,8 +144,8 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-display font-semibold text-sm">Téléphone</h3>
-                    <a href="tel:+261342179997" className="text-muted-foreground text-xs hover:text-primary transition-colors">
-                      +261 34 21 799 97
+                    <a href="tel:+261383066686" className="text-muted-foreground text-xs hover:text-primary transition-colors">
+                      +261 38 30 666 86
                     </a>
                   </div>
                 </div>

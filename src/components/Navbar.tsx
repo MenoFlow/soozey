@@ -17,6 +17,29 @@ const navItems = [
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const location = useLocation();
+    
+  // Variants pour le contenu (liens et boutons)
+  const contentVariants = {
+    hidden: { 
+      opacity: 0,
+      transition: {
+        staggerChildren: 0.05, // Effet cascade rapide
+        staggerDirection: -1,  // S'éteint dans l'ordre inverse (du bas vers le haut)
+      }
+    },
+    visible: { 
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.08, // Effet cascade à l'ouverture
+        delayChildren: 0.2,    // Attend que le fond soit ouvert
+      }
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: { opacity: 1, y: 0 },
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass">
@@ -58,30 +81,44 @@ export function Navbar() {
       <AnimatePresence>
         {open && (
           <motion.div
+            // Animation du CONTENEUR (Fond)
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden glass border-t border-border/50"
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            layout
+            className="lg:hidden glass border-t border-border/50 overflow-hidden"
           >
-            <div className="container mx-auto px-4 py-4 flex flex-col gap-2">
+            {/* Animation du CONTENU */}
+            <motion.div
+              variants={contentVariants}
+              initial="hidden"
+              animate="visible"
+              exit="hidden" // Déclenche la fermeture des éléments
+              className="container mx-auto px-4 py-4 flex flex-col gap-2"
+            >
               {navItems.map((item) => (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  onClick={() => setOpen(false)}
-                  className={`px-4 py-3 rounded-md text-sm font-medium transition-colors ${
-                    location.pathname === item.path
-                      ? "text-primary bg-primary/10"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  {item.label}
-                </Link>
+                <motion.div key={item.path} variants={itemVariants}>
+                  <Link
+                    to={item.path}
+                    onClick={() => setOpen(false)}
+                    className={`block px-4 py-3 rounded-md text-sm font-medium transition-colors ${
+                      location.pathname === item.path
+                        ? "text-primary bg-primary/10"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                </motion.div>
               ))}
-              <Button variant="hero" size="sm" asChild className="mt-2">
-                <Link to="/contact">Nous contacter</Link>
-              </Button>
-            </div>
+              
+              <motion.div variants={itemVariants}>
+                <Button variant="hero" size="sm" asChild className="mt-2 w-full">
+                  <Link to="/contact">Nous contacter</Link>
+                </Button>
+              </motion.div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
