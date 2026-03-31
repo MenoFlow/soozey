@@ -35,7 +35,7 @@ export default function About() {
                 />
               </div>
               <p className="text-muted-foreground text-xs sm:text-sm mt-3 text-center">
-                Découvrez Soozey — Solutions digitales adaptées aux réalités africaines.
+                Découvrez Soozey — Transformation des problèmes réels en solutions digitales adaptées.
               </p>
             </div>
           </FadeIn>
