@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 225 40% 6%;
+    --foreground: 210 40% 95%;
+
+    --card: 225 35% 10%;
+    --card-foreground: 210 40% 95%;
+
+    --popover: 225 35% 10%;
+    --popover-foreground: 210 40% 95%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 225 40% 6%;
+
+    --secondary: 225 30% 15%;
+    --secondary-foreground: 210 40% 90%;
+
+    --muted: 225 25% 14%;
+    --muted-foreground: 215 20% 55%;
+
+    --accent: 190 90% 50%;
+    --accent-foreground: 225 40% 6%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 225 20% 18%;
+    --input: 225 20% 18%;
+    --ring: 217 91% 60%;
+
+    --radius: 0.75rem;
+
+    --glow: 217 91% 60%;
+    --surface: 225 30% 12%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html, body {
+    @apply overflow-x-hidden;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-card/60 backdrop-blur-xl border border-border/50 transition-all duration-300 ease-out;
+  }
+  
+  .glass:hover {
+    @apply scale-[1.02] border-border/80;
+    box-shadow: 0 0 20px -5px hsl(var(--glow) / 0.25), 0 8px 24px -8px hsl(var(--background) / 0.5);
+  }
+  
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
+  }
+
+  .glow-border {
+    box-shadow: 0 0 20px -5px hsl(var(--glow) / 0.3);
+  }
+
+  .section-padding {
+    @apply py-10 sm:py-14 md:py-16 px-4 md:px-8;
+  }
+}
