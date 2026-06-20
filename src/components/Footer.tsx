@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin } from "lucide-react";
+import { featuredProducts } from "@/data/products";
 
 export function Footer() {
   return (
@@ -36,9 +37,9 @@ export function Footer() {
           <div>
             <h4 className="font-display font-semibold mb-3 sm:mb-4 text-foreground text-sm sm:text-base">Produits</h4>
             <div className="flex flex-col gap-1.5 sm:gap-2">
-              {["JusticeConnect", "SIIRH", "Mianara", "TrackFuel", "FinAudit AI"].map((p) => (
-                <Link key={p} to={`/produits/${p.toLowerCase().replace(/ /g, "-")}`} className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors">
-                  {p}
+              {featuredProducts.map((p) => (
+                <Link key={p.slug} to={`/produits/${p.slug}`} className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors">
+                  {p.name}
                 </Link>
               ))}
             </div>

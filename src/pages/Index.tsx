@@ -9,16 +9,11 @@ import {
   Brain,
   Settings,
   ArrowRight,
-  Shield,
   Target,
-  Users,
-  Scale,
-  Briefcase,
   BarChart3,
-  Truck,
-  DollarSign,
 } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
+import { featuredProducts } from "@/data/products";
 
 const expertises = [
   {
@@ -36,14 +31,6 @@ const expertises = [
     title: "Solutions métiers sur mesure",
     desc: "Outils personnalisés pour la finance, la logistique et les ressources humaines.",
   },
-];
-
-const products = [
-  { name: "JusticeConnect", slug: "justiceconnect", icon: Scale, desc: "Plateforme de gestion du système judiciaire" },
-  { name: "SIIRH", slug: "siirh", icon: Users, desc: "Système intégré de gestion des ressources humaines" },
-  { name: "Mianara", slug: "mianara", icon: Shield, desc: "Plateforme de surveillance et sécurité" },
-  { name: "TrackFuel", slug: "trackfuel", icon: Truck, desc: "Solution de suivi logistique et carburant" },
-  { name: "FinAudit AI", slug: "finaudit-ai", icon: DollarSign, desc: "Audit financier augmenté par l'IA" },
 ];
 
 const projects = [
@@ -149,7 +136,7 @@ const Index = () => {
             </p>
           </FadeIn>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
-            {products.map((p, i) => (
+            {featuredProducts.map((p, i) => (
               <FadeIn key={p.slug} delay={i * 0.1}>
                 <Link
                   to={`/produits/${p.slug}`}

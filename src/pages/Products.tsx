@@ -1,15 +1,8 @@
 import { Layout } from "@/components/Layout";
 import { FadeIn } from "@/components/FadeIn";
 import { Link } from "react-router-dom";
-import { Scale, Users, Shield, Truck, DollarSign, ArrowRight } from "lucide-react";
-
-const products = [
-  { name: "JusticeConnect", slug: "justiceconnect", icon: Scale, desc: "Plateforme intégrée de gestion du système judiciaire : suivi des affaires, gestion des audiences, archivage numérique.", color: "from-blue-500 to-cyan-500" },
-  { name: "SIIRH", slug: "siirh", icon: Users, desc: "Système intégré de gestion des ressources humaines : paie, congés, évaluations, formation.", color: "from-emerald-500 to-teal-500" },
-  { name: "Mianara", slug: "mianara", icon: Shield, desc: "Plateforme de surveillance, monitoring et sécurité pour les infrastructures critiques.", color: "from-violet-500 to-purple-500" },
-  { name: "TrackFuel", slug: "trackfuel", icon: Truck, desc: "Solution de suivi logistique, gestion de flotte et traçabilité du carburant.", color: "from-orange-500 to-amber-500" },
-  { name: "FinAudit AI", slug: "finaudit-ai", icon: DollarSign, desc: "Audit financier augmenté par l'intelligence artificielle : détection d'anomalies, reporting automatisé.", color: "from-rose-500 to-pink-500" },
-];
+import { ArrowRight } from "lucide-react";
+import { products } from "@/data/products";
 
 export default function Products() {
   return (
