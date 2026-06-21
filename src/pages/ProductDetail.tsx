@@ -25,7 +25,8 @@ export default function ProductDetail() {
   }
 
   const Icon = product.icon;
-  const isExternalSite = product.siteUrl.startsWith("http");
+  const accessUrl = (product as typeof product & { externalUrl?: string }).externalUrl ?? product.siteUrl;
+  const isExternalSite = accessUrl.startsWith("http");
 
   return (
     <Layout>
@@ -102,13 +103,13 @@ export default function ProductDetail() {
           <FadeIn>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mt-8 sm:mt-10">
               <Button variant="hero" size="lg" asChild className="w-full sm:w-auto">
-                {isExternalSite ? (
-                  <a href={product.siteUrl} target="_blank" rel="noopener noreferrer">
+              {isExternalSite ? (
+                  <a href={accessUrl} target="_blank" rel="noopener noreferrer">
                     Accéder au site
                     <ExternalLink className="ml-2 h-4 w-4" />
                   </a>
                 ) : (
-                  <Link to={product.siteUrl}>
+                  <Link to={accessUrl}>
                     Accéder au site
                     <ExternalLink className="ml-2 h-4 w-4" />
                   </Link>

@@ -94,6 +94,7 @@ export const products = [
     africaAdvantage: "Structurant pour fiabiliser fichiers agents et maîtriser la masse salariale.",
     targets: "Fonction publique, ministères, collectivités, directions RH",
     siteUrl: "/produits/siirh-public-portail-fonctionnaire",
+    externalUrl: "https://siirh.soozey.com",
   },
   {
     name: "Patrimonia",
@@ -107,6 +108,7 @@ export const products = [
     africaAdvantage: "Réplicable pour États, collectivités, universités et hôpitaux.",
     targets: "Domaines, patrimoine de l'État, collectivités, établissements publics",
     siteUrl: "/produits/patrimonia",
+    externalUrl: "https://patrimonia.soozey.com",
   },
   {
     name: "PraxisCités",

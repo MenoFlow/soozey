@@ -1,0 +1,9 @@
+services:
+  soozey:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: soozey-app
+    ports:
+      - "5896:80"
+    restart: unless-stopped

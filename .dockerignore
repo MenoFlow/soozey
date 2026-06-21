@@ -1,0 +1,35 @@
+# Dépendances (reconstruites dans le conteneur)
+node_modules
+
+# Output de build
+dist
+
+# Git
+.git
+.gitignore
+
+# Logs
+*.log
+npm-debug.log*
+
+# Variables d'environnement locales
+.env
+.env.local
+.env.*.local
+
+# Cache
+.cache
+.vite
+
+# IDE
+.vscode
+.idea
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+Dockerfile
+.dockerignore
+docker-compose*.yml
