@@ -42,6 +42,7 @@ export const products = [
     africaAdvantage: "Pertinent pour les États confrontés aux enjeux de contrôle budgétaire, conformité et audit public.",
     targets: "Ministères, inspections, trésor, collectivités, bailleurs, établissements publics",
     siteUrl: "/produits/fandaniana",
+    externalUrl: "https://kaonty.com",
   },
   {
     name: "Civilex",

@@ -1,15 +1,18 @@
+import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { FadeIn } from "@/components/FadeIn";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, CheckCircle, ExternalLink } from "lucide-react";
+import { ArrowLeft, CheckCircle, PlayCircle } from "lucide-react";
 import { productHighlights, products } from "@/data/products";
+import { DemoRequestModal } from "@/components/DemoRequestModal";
 
 const productsData = Object.fromEntries(products.map((product) => [product.slug, product]));
 
 export default function ProductDetail() {
   const { slug } = useParams<{ slug: string }>();
   const product = slug ? productsData[slug] : null;
+  const [demoOpen, setDemoOpen] = useState(false);
 
   if (!product) {
     return (
@@ -25,8 +28,6 @@ export default function ProductDetail() {
   }
 
   const Icon = product.icon;
-  const accessUrl = (product as typeof product & { externalUrl?: string }).externalUrl ?? product.siteUrl;
-  const isExternalSite = accessUrl.startsWith("http");
 
   return (
     <Layout>
@@ -102,18 +103,14 @@ export default function ProductDetail() {
 
           <FadeIn>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mt-8 sm:mt-10">
-              <Button variant="hero" size="lg" asChild className="w-full sm:w-auto">
-              {isExternalSite ? (
-                  <a href={accessUrl} target="_blank" rel="noopener noreferrer">
-                    Accéder au site
-                    <ExternalLink className="ml-2 h-4 w-4" />
-                  </a>
-                ) : (
-                  <Link to={accessUrl}>
-                    Accéder au site
-                    <ExternalLink className="ml-2 h-4 w-4" />
-                  </Link>
-                )}
+              <Button
+                variant="hero"
+                size="lg"
+                className="w-full sm:w-auto"
+                onClick={() => setDemoOpen(true)}
+              >
+                <PlayCircle className="mr-2 h-4 w-4" />
+                Demander une démo
               </Button>
               <Button variant="hero-outline" size="lg" asChild className="w-full sm:w-auto">
                 <Link to="/contact">Nous contacter</Link>
@@ -122,6 +119,12 @@ export default function ProductDetail() {
           </FadeIn>
         </div>
       </section>
+
+      <DemoRequestModal
+        open={demoOpen}
+        onOpenChange={setDemoOpen}
+        productName={product.name}
+      />
     </Layout>
   );
 }
