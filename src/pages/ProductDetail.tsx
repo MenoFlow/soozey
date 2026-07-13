@@ -103,15 +103,24 @@ export default function ProductDetail() {
 
           <FadeIn>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mt-8 sm:mt-10">
-              <Button
-                variant="hero"
-                size="lg"
-                className="w-full sm:w-auto"
-                onClick={() => setDemoOpen(true)}
-              >
-                <PlayCircle className="mr-2 h-4 w-4" />
-                Demander une démo
-              </Button>
+              {product.externalUrl ? (
+                <Button variant="hero" size="lg" asChild className="w-full sm:w-auto">
+                  <a href={product.externalUrl} target="_blank" rel="noopener noreferrer">
+                    <PlayCircle className="mr-2 h-4 w-4" />
+                    Démo
+                  </a>
+                </Button>
+              ) : (
+                <Button
+                  variant="hero"
+                  size="lg"
+                  className="w-full sm:w-auto"
+                  onClick={() => setDemoOpen(true)}
+                >
+                  <PlayCircle className="mr-2 h-4 w-4" />
+                  Démo
+                </Button>
+              )}
               <Button variant="hero-outline" size="lg" asChild className="w-full sm:w-auto">
                 <Link to="/contact">Nous contacter</Link>
               </Button>
